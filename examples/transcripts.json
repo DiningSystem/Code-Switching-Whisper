@@ -1,0 +1,28 @@
+{
+  "file_0001.mp3":{
+    "code_switch": "[vi]Sáng nay tớ dậy muộn quá, may mà cái [en]meeting là [en]online [vi]chứ không là toang rồi.",
+    "vi_full": "Sáng nay tớ dậy muộn quá, may mà cuộc họp là online chứ không là toang rồi.",
+    "en_full": "This morning I woke up too late, luckily the meeting was online or I would've been in trouble."
+  },
+  "file_0002.mp3":{
+    "code_switch": "[vi]Tối qua tớ thử cái bánh mới ở quán, trời ơi nó [en]so good [vi]luôn.",
+    "vi_full": "Tối qua tớ thử cái bánh mới ở quán, trời ơi nó ngon cực luôn.",
+    "en_full": "Last night I tried the new pastry at the café, and it was so good."
+  },
+  "file_0003.mp3":{
+    "code_switch": "[vi]Đang làm bài thì máy tính tự nhiên [en]froze [vi], mất hết cả đoạn.",
+    "vi_full": "Đang làm bài thì máy tính tự nhiên bị treo, mất hết cả đoạn.",
+    "en_full": "While I was working on my assignment, my laptop suddenly froze and I lost everything."
+  },
+  "file_0004.mp3":{
+    "code_switch": "[vi]Không hiểu sao nay trời nóng kinh khủng, ra đường tí là [en]sweating like crazy [vi].",
+    "vi_full": "Không hiểu sao hôm nay trời nóng kinh khủng, ra đường một tí là đổ mồ hôi như tắm.",
+    "en_full": "I don’t know why it's so hot today; just stepping outside makes me sweat like crazy."
+  },
+  "file_0005.mp3":{
+    "code_switch": "[vi]Cuối tuần này muốn đi biển không? Tớ đang cần [en]break [vi]gấp.",
+    "vi_full": "Cuối tuần này muốn đi biển không? Tớ đang cần nghỉ ngơi gấp.",
+    "en_full": "Do you want to go to the beach this weekend? I really need a break."
+  }
+  
+}

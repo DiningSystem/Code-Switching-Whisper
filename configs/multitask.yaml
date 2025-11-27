@@ -1,0 +1,28 @@
+seed: 42
+
+model:
+  model_id: openai/whisper-small
+
+dataset:
+  audio_dir: ./examples/audio
+  transcripts_json: ./examples/transcripts.json
+  test_size: 0.1
+
+training:
+  output_dir: ./outputs
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  num_train_epochs: 1
+  learning_rate: 3e-5
+  fp16: True
+  logging_steps: 50
+
+tokening:
+  # inline tags present in dataset (these will be converted to Whisper tokens)
+  inline_language_tags: ["[vi]", "[en]"]
+
+multitask:
+  task_probabilities:
+    transcribe: 0.6
+    translate_vi: 0.2
+    translate_en: 0.2
