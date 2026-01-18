@@ -44,6 +44,8 @@ def run_train(config_path: str):
     print("Loading processor and model:", model_id)
     processor = WhisperProcessor.from_pretrained(model_id)
     model = WhisperForConditionalGeneration.from_pretrained(model_id)
+    #model.config.use_cache = False
+    #model.gradient_checkpointing_enable()
 
     ds = load_json_dataset(cfg["dataset"]["audio_dir"], cfg["dataset"]["transcripts_json"])
     ds = ds.train_test_split(test_size=cfg["dataset"].get("test_size", 0.1))
@@ -57,15 +59,26 @@ def run_train(config_path: str):
     tcfg = cfg["training"]
     training_args = Seq2SeqTrainingArguments(
         output_dir=tcfg.get("output_dir", "./outputs"),
+        overwrite_output_dir=True,
         per_device_train_batch_size=tcfg.get("per_device_train_batch_size", 8),
         per_device_eval_batch_size=tcfg.get("per_device_eval_batch_size", 8),
         num_train_epochs=tcfg.get("num_train_epochs", 3),
+        gradient_accumulation_steps=4,
         learning_rate=float(tcfg.get("learning_rate", 3e-5)),
+        lr_scheduler_type="cosine",
+        warmup_ratio=0.1,
+        weight_decay=0.01,
+        max_grad_norm=1.0,
         logging_steps=tcfg.get("logging_steps", 50),
         eval_strategy="steps",
         save_strategy="epoch",
+        label_smoothing_factor=0.0,
+        eval_steps=1000,
+        save_total_limit=3,
         predict_with_generate=True,
         fp16=tcfg.get("fp16", False),
+        report_to="none",
+        dataloader_num_workers=4,
         remove_unused_columns=False,
     )
     device = "cuda" if torch.cuda.is_available() else "cpu"
