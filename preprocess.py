@@ -3,8 +3,8 @@ import random
 import soundfile as sf
 import numpy as np
 
-START_TOKEN = "<|startoftranscript|>"
-END_TOKEN = "<|endoftext|>"
+START_TOKEN = "<|START OF TRANSCRIPT|>"
+END_TOKEN = "<|EOT|>"
 
 def convert_inline_tags_to_whisper(text: str) -> str:
     """
@@ -29,14 +29,14 @@ def build_target_whisper_format(item: dict, task_probs: dict):
         # Keep inline tags converted; do not re-add a separate language token to avoid duplication.
         code_switch = convert_inline_tags_to_whisper(item.get("code_switch", ""))
         # Structure: <|startoftranscript|><|transcribe|> CODE_SWITCH <|endoftext|>
-        label = f"{START_TOKEN} <|transcribe|> {code_switch} {END_TOKEN}"
+        label = f"{START_TOKEN} <|TRANSCRIBE|> {code_switch} {END_TOKEN}"
     elif choice == "translate_vi":
         vi_full = item.get("vi_full", "")
         # We seed with the target language token to be explicit
-        label = f"{START_TOKEN} <|translate|> <|vi|> {vi_full} {END_TOKEN}"
+        label = f"{START_TOKEN} <|TRANSLATE|> <|NOTIMESTAMPS|> {vi_full} {END_TOKEN}"
     else:  # translate_en
         en_full = item.get("en_full", "")
-        label = f"{START_TOKEN} <|translate|> <|en|> {en_full} {END_TOKEN}"
+        label = f"{START_TOKEN} <|TRANSLATE|> {en_full} {END_TOKEN}"
 
     return label, choice
 
