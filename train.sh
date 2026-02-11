@@ -6,7 +6,6 @@
 #SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)
 #SBATCH --gres=gpu:1             # number of gpus per node
 #SBATCH --time=00:01:00          # total run time limit (HH:MM:SS)
-
+source ~/.bashrc
 conda activate train_env
-
 python train.py --config=./configs/multitask.yaml
