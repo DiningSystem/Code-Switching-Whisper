@@ -13,7 +13,7 @@ def read_txt_folder_to_json(folder_path):
             with open(file_path, "r", encoding="utf-8") as f:
                 lines = [line.strip() for line in f.readlines()]
 
-                if len(lines) >= 3:
+                if len(lines) >= 1:
                     code_switch = lines[0]
                     vi_full = lines[1]
                     en_full = lines[2]
