@@ -15,8 +15,8 @@ def read_txt_folder_to_json(folder_path):
 
                 if len(lines) >= 1:
                     code_switch = lines[0]
-                    vi_full = lines[1]
-                    en_full = lines[2]
+                    #vi_full = lines[1]
+                    #en_full = lines[2]
 
                     # Convert .txt → .mp3
                     wav_name = filename.replace(".txt", ".wav")
