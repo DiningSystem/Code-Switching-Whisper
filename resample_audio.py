@@ -44,7 +44,7 @@ def resample_dir(input_dir, output_dir, target_sr=16000, overwrite=False):
         if not fname.lower().endswith((".wav", ".flac", ".mp3")):
             continue
         in_path = os.path.join(input_dir, fname)
-        out_path = os.path.join(output_dir, fname)  # keep same name
+        out_path = os.path.join(output_dir, fname.split('_')[0] + '.wav')  # keep same name
         if os.path.exists(out_path) and not overwrite:
             print("Skipping (exists):", out_path)
             continue
