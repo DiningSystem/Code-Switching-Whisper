@@ -2,12 +2,13 @@
 import os
 import soundfile as sf
 import numpy as np
-import librosa
+
 
 # choose method: use librosa or torchaudio
 USE_TORCHAUDIO = True
 
 def resample_file(in_path, out_path, target_sr=16000):
+    import librosa
     data, sr = librosa.load(in_path, sr=None)
     #data, sr = sf.read(in_path)
     if data.ndim > 1:
