@@ -2,15 +2,13 @@
 import os
 import soundfile as sf
 import numpy as np
-from pydub import AudioSegment
 
 # choose method: use librosa or torchaudio
 USE_TORCHAUDIO = True
 
 def resample_file(in_path, out_path, target_sr=16000):
-    sound = AudioSegment.from_wav(in_path)
-    sound.export(in_path, format="wav")
-    data, sr = sf.read(in_path)
+    data, sr = librosa.load("yourfile.wav", sr=None)
+    #data, sr = sf.read(in_path)
     if data.ndim > 1:
         data = np.mean(data, axis=1)
     if sr == target_sr:
