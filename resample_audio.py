@@ -8,9 +8,9 @@ import numpy as np
 USE_TORCHAUDIO = True
 
 def resample_file(in_path, out_path, target_sr=16000):
-    import librosa
-    data, sr = librosa.load(in_path, sr=None)
-    #data, sr = sf.read(in_path)
+    #import librosa
+    #data, sr = librosa.load(in_path, sr=None)
+    data, sr = sf.read(in_path)
     if data.ndim > 1:
         data = np.mean(data, axis=1)
     if sr == target_sr:
